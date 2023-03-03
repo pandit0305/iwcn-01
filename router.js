@@ -19,6 +19,15 @@ userRouter.post('/add', async (req, res)=>{
        }
 })
 
+userRouter.get('/get', async (req, res)=>{
+    try{
+        const profile = await userModel.find();
+        res.send(profile);
+    }catch(err){
+        res.status(400).send({message:err.message});
+
+    }
+})
 
 userRouter.put('/:id', async (req, res)=>{
     const id = req.params.id;
